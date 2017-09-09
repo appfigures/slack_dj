@@ -22,8 +22,17 @@ class PlayVideo
         url: url.to_s,
         user: context.user
       )
+
       context.dj.new_video_added!
-      context.message = "Success! Your video was added to the playlist."
+
+      ql = context.playlist.queue_length
+      position = "<#{url}|Video> will play next"
+
+      if ql > 1
+        position = "<#{url}|Video> has been queued! There are #{ql} videos ahead"
+      end if
+
+      context.message = position
     else
       context.fail!
       context.errors = "That doesn't look like a valid youtube url. "
