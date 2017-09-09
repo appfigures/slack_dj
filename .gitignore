@@ -21,3 +21,6 @@
 .byebug_history
 
 OUTLINE.md
+
+# Ignore Mac meta files
+.DS_Store
