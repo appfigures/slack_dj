@@ -17,8 +17,9 @@ class ShowHistory
     def print
       user_name = user.name.present? ? user.name : "John Doe"
       video_title = title ? title : "Title unknown"
+      video_url = url ? url : "#"
 
-      "#{user_name} - #{video_title}"
+      "#{user_name} - <#{video_url}|#{video_title}>"
     end
   end
 
