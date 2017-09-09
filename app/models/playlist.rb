@@ -22,4 +22,12 @@ class Playlist < ApplicationRecord
   def last_played(amount=20)
     videos.played.order(played_at: :desc).limit(amount)
   end
+
+  def queued(amount=5)
+    videos.unplayed.order(created_at: :asc).limit(amount)
+  end
+
+  def queue_length
+      videos.unplayed.count
+  end
 end
